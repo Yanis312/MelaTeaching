@@ -1,0 +1,76 @@
+{
+  "auth": {
+    "login": "Connexion",
+    "register": "Inscription",
+    "email": "Adresse e-mail",
+    "password": "Mot de passe",
+    "fullName": "Nom complet",
+    "phone": "Téléphone",
+    "forgotPassword": "Mot de passe oublié ?",
+    "noAccount": "Pas encore de compte ?",
+    "hasAccount": "Déjà un compte ?",
+    "loginButton": "Se connecter",
+    "registerButton": "S'inscrire",
+    "iAmParent": "Je suis un parent",
+    "iAmStudent": "Je suis un élève",
+    "awaitingApproval": "Votre compte est en attente de validation.",
+    "childName": "Prénom de l'enfant",
+    "childLevel": "Niveau scolaire de l'enfant"
+  },
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "calendar": "Calendrier",
+    "students": "Élèves",
+    "bookings": "Réservations",
+    "courses": "Cours",
+    "pricing": "Tarifs",
+    "notifications": "Notifications",
+    "profile": "Profil",
+    "logout": "Déconnexion",
+    "registrations": "Inscriptions"
+  },
+  "booking": {
+    "pending": "En attente",
+    "accepted": "Accepté",
+    "rejected": "Refusé",
+    "cancelled": "Annulé",
+    "counterProposed": "Contre-proposition",
+    "paid": "Payé",
+    "unpaid": "Non payé",
+    "request": "Demande de cours",
+    "selectDate": "Choisir une date",
+    "selectTime": "Choisir l'heure",
+    "confirm": "Confirmer",
+    "cancel": "Annuler",
+    "propose": "Proposer un autre créneau"
+  },
+  "levels": {
+    "primaire_1": "Primaire 1ère année",
+    "primaire_2": "Primaire 2ème année",
+    "primaire_3": "Primaire 3ème année",
+    "primaire_4": "Primaire 4ème année",
+    "primaire_5": "Primaire 5ème année",
+    "cem_1": "CEM 1ère année",
+    "cem_2": "CEM 2ème année",
+    "cem_3": "CEM 3ème année",
+    "cem_4": "CEM 4ème année (Brevet)",
+    "lycee_1as": "Lycée 1ère AS",
+    "lycee_2as": "Lycée 2ème AS",
+    "lycee_3as": "Lycée 3ème AS (Bac)"
+  },
+  "subjects": {
+    "math": "Mathématiques",
+    "physique": "Physique",
+    "chimie": "Chimie"
+  },
+  "common": {
+    "save": "Enregistrer",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "search": "Rechercher",
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "success": "Opération réussie",
+    "appName": "Mela Teaching"
+  }
+}

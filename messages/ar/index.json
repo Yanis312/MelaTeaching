@@ -1,0 +1,76 @@
+{
+  "auth": {
+    "login": "تسجيل الدخول",
+    "register": "التسجيل",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "fullName": "الاسم الكامل",
+    "phone": "رقم الهاتف",
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "noAccount": "ليس لديك حساب؟",
+    "hasAccount": "لديك حساب؟",
+    "loginButton": "دخول",
+    "registerButton": "تسجيل",
+    "iAmParent": "أنا ولي أمر",
+    "iAmStudent": "أنا طالب",
+    "awaitingApproval": "حسابك في انتظار الموافقة.",
+    "childName": "اسم الطفل",
+    "childLevel": "المستوى الدراسي للطفل"
+  },
+  "nav": {
+    "dashboard": "لوحة التحكم",
+    "calendar": "التقويم",
+    "students": "الطلاب",
+    "bookings": "الحجوزات",
+    "courses": "الدروس",
+    "pricing": "الأسعار",
+    "notifications": "الإشعارات",
+    "profile": "الملف الشخصي",
+    "logout": "تسجيل الخروج",
+    "registrations": "التسجيلات"
+  },
+  "booking": {
+    "pending": "في الانتظار",
+    "accepted": "مقبول",
+    "rejected": "مرفوض",
+    "cancelled": "ملغى",
+    "counterProposed": "اقتراح بديل",
+    "paid": "مدفوع",
+    "unpaid": "غير مدفوع",
+    "request": "طلب درس",
+    "selectDate": "اختر التاريخ",
+    "selectTime": "اختر الوقت",
+    "confirm": "تأكيد",
+    "cancel": "إلغاء",
+    "propose": "اقتراح موعد آخر"
+  },
+  "levels": {
+    "primaire_1": "ابتدائي السنة الأولى",
+    "primaire_2": "ابتدائي السنة الثانية",
+    "primaire_3": "ابتدائي السنة الثالثة",
+    "primaire_4": "ابتدائي السنة الرابعة",
+    "primaire_5": "ابتدائي السنة الخامسة",
+    "cem_1": "متوسط السنة الأولى",
+    "cem_2": "متوسط السنة الثانية",
+    "cem_3": "متوسط السنة الثالثة",
+    "cem_4": "متوسط السنة الرابعة (شهادة التعليم)",
+    "lycee_1as": "ثانوي السنة الأولى",
+    "lycee_2as": "ثانوي السنة الثانية",
+    "lycee_3as": "ثانوي السنة الثالثة (البكالوريا)"
+  },
+  "subjects": {
+    "math": "الرياضيات",
+    "physique": "الفيزياء",
+    "chimie": "الكيمياء"
+  },
+  "common": {
+    "save": "حفظ",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "search": "بحث",
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ",
+    "success": "تمت العملية بنجاح",
+    "appName": "ميلا للتعليم"
+  }
+}

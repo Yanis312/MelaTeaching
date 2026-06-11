@@ -1,0 +1,76 @@
+{
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "email": "Email address",
+    "password": "Password",
+    "fullName": "Full name",
+    "phone": "Phone number",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "loginButton": "Sign in",
+    "registerButton": "Sign up",
+    "iAmParent": "I am a parent",
+    "iAmStudent": "I am a student",
+    "awaitingApproval": "Your account is awaiting approval.",
+    "childName": "Child's name",
+    "childLevel": "Child's school level"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "calendar": "Calendar",
+    "students": "Students",
+    "bookings": "Bookings",
+    "courses": "Courses",
+    "pricing": "Pricing",
+    "notifications": "Notifications",
+    "profile": "Profile",
+    "logout": "Logout",
+    "registrations": "Registrations"
+  },
+  "booking": {
+    "pending": "Pending",
+    "accepted": "Accepted",
+    "rejected": "Rejected",
+    "cancelled": "Cancelled",
+    "counterProposed": "Counter proposal",
+    "paid": "Paid",
+    "unpaid": "Unpaid",
+    "request": "Book a lesson",
+    "selectDate": "Select date",
+    "selectTime": "Select time",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "propose": "Propose another time"
+  },
+  "levels": {
+    "primaire_1": "Primary Year 1",
+    "primaire_2": "Primary Year 2",
+    "primaire_3": "Primary Year 3",
+    "primaire_4": "Primary Year 4",
+    "primaire_5": "Primary Year 5",
+    "cem_1": "Middle School Year 1",
+    "cem_2": "Middle School Year 2",
+    "cem_3": "Middle School Year 3",
+    "cem_4": "Middle School Year 4 (Brevet)",
+    "lycee_1as": "High School Year 1",
+    "lycee_2as": "High School Year 2",
+    "lycee_3as": "High School Year 3 (Baccalaureate)"
+  },
+  "subjects": {
+    "math": "Mathematics",
+    "physique": "Physics",
+    "chimie": "Chemistry"
+  },
+  "common": {
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Operation successful",
+    "appName": "Mela Teaching"
+  }
+}
