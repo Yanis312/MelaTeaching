@@ -1,21 +1,17 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
-import createIntlMiddleware from 'next-intl/middleware'
 
-const intlMiddleware = createIntlMiddleware({
-  locales: ['fr', 'ar', 'en'],
-  defaultLocale: 'fr',
-  localePrefix: 'as-needed',
-})
+const PUBLIC_PATHS = ['/login', '/register', '/forgot-password']
 
-const PUBLIC_PATHS = ['/login', '/register', '/ar/login', '/ar/register', '/en/login', '/en/register']
-
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
+
+  const isPublic = PUBLIC_PATHS.some(p => pathname.startsWith(p)) || pathname === '/'
+  if (isPublic) return NextResponse.next()
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    (process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY)!,
     {
       cookies: {
         getAll: () => request.cookies.getAll(),
@@ -25,13 +21,12 @@ export async function middleware(request: NextRequest) {
   )
 
   const { data: { user } } = await supabase.auth.getUser()
-  const isPublic = PUBLIC_PATHS.some(p => pathname.startsWith(p)) || pathname === '/'
 
-  if (!user && !isPublic) {
+  if (!user) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
 
-  return intlMiddleware(request)
+  return NextResponse.next()
 }
 
 export const config = {
