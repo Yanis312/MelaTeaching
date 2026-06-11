@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useState, useTransition } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { LogoIcon } from "@/components/ui/logo-icon"
 import { BackgroundBeams } from "@/components/effects/background-beams"
@@ -8,9 +8,10 @@ import { ThemeToggle } from "@/components/layout/theme-toggle"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faEnvelope, faLock, faEye, faEyeSlash,
-  faSpinner, faGlobe, faRightToBracket
+  faSpinner, faGlobe, faRightToBracket, faTriangleExclamation
 } from "@fortawesome/free-solid-svg-icons"
 import Link from "next/link"
+import { loginAction } from "../actions"
 
 type Lang = "fr" | "ar" | "en"
 
@@ -25,6 +26,7 @@ const t = {
     noAccount: "Pas encore de compte ?",
     register: "S'inscrire",
     loading: "Connexion...",
+    awaitingApproval: "Compte en attente de validation.",
     dir: "ltr" as const,
   },
   ar: {
@@ -37,6 +39,7 @@ const t = {
     noAccount: "ليس لديك حساب؟",
     register: "التسجيل",
     loading: "جاري الدخول...",
+    awaitingApproval: "حسابك في انتظار الموافقة.",
     dir: "rtl" as const,
   },
   en: {
@@ -49,6 +52,7 @@ const t = {
     noAccount: "Don't have an account?",
     register: "Sign up",
     loading: "Signing in...",
+    awaitingApproval: "Account awaiting approval.",
     dir: "ltr" as const,
   },
 }
@@ -59,19 +63,29 @@ const LANG_FLAGS: Record<Lang, string> = { fr: "FR", ar: "AR", en: "EN" }
 export default function LoginPage() {
   const [lang, setLang] = useState<Lang>("fr")
   const [showPassword, setShowPassword] = useState(false)
-  const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [langOpen, setLangOpen] = useState(false)
+  const [authError, setAuthError] = useState<string | null>(null)
+  const [isPending, startTransition] = useTransition()
 
   const txt = t[lang]
   const isRtl = txt.dir === "rtl"
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setLoading(true)
-    await new Promise(r => setTimeout(r, 1500))
-    setLoading(false)
+    setAuthError(null)
+    const fd = new FormData(e.currentTarget)
+    startTransition(async () => {
+      const result = await loginAction(fd)
+      if (result?.error) {
+        setAuthError(
+          result.error === "awaiting_approval"
+            ? txt.awaitingApproval
+            : result.error
+        )
+      }
+    })
   }
 
   return (
@@ -177,6 +191,13 @@ export default function LoginPage() {
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Error */}
+            {authError && (
+              <div className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20 text-red-600 dark:text-red-400 text-sm">
+                <FontAwesomeIcon icon={faTriangleExclamation} className="w-4 h-4 shrink-0" />
+                {authError}
+              </div>
+            )}
             {/* Email */}
             <div className="relative group">
               <div className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? "right-4" : "left-4"} text-stone-300 dark:text-white/25 group-focus-within:text-amber-500 transition-colors`}>
@@ -184,6 +205,7 @@ export default function LoginPage() {
               </div>
               <input
                 type="email"
+                name="email"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 placeholder={txt.email}
@@ -207,6 +229,7 @@ export default function LoginPage() {
               </div>
               <input
                 type={showPassword ? "text" : "password"}
+                name="password"
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 placeholder={txt.password}
@@ -240,7 +263,7 @@ export default function LoginPage() {
             {/* Submit */}
             <motion.button
               type="submit"
-              disabled={loading}
+              disabled={isPending}
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.98 }}
               className="w-full py-3.5 rounded-xl font-semibold text-sm
@@ -250,7 +273,7 @@ export default function LoginPage() {
                 disabled:opacity-60 disabled:cursor-not-allowed
                 transition-all flex items-center justify-center gap-2"
             >
-              {loading ? (
+              {isPending ? (
                 <>
                   <FontAwesomeIcon icon={faSpinner} className="w-4 h-4 animate-spin" />
                   {txt.loading}
